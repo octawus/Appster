@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "323913828884",
+    "project_id": "appster-10e3c",
+    "storage_bucket": "appster-10e3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323913828884:android:e0634fedc2810e74e7b501",
+        "android_client_info": {
+          "package_name": "com.example.appster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323913828884-rr1afc922aicr82pgh4ak5p742meje5u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1pQQa46tWAWkeRqexew69vsJFPniVTBA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323913828884-rr1afc922aicr82pgh4ak5p742meje5u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
