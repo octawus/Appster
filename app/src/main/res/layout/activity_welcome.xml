@@ -4,47 +4,86 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Welcome">
+    android:background="@drawable/gradient_background">
 
-    <EditText
-        android:id="@+id/email"
+    <ImageView
+        android:id="@+id/custom_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:hint="@string/email"
-        android:autofillHints="@string/email"/>
-
-    <EditText
-        android:id="@+id/pass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
-        app:layout_constraintVertical_bias="0.052"
-        android:hint="@string/password"
-        android:autofillHints="@string/password"/>
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_launcher_foreground"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pass"
-        app:layout_constraintVertical_bias="0.302"
-        android:onClick="signIn"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+
+    <!-- Horiz line, left of email header -->
+
+    <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
+        android:id="@+id/custom_google_signin_button"
+        style="@style/FirebaseUI.Button.AccountChooser.GoogleButton"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="316dp"
+        android:text="@string/fui_sign_in_with_google"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/custom_logo" />
+
+    <com.firebase.ui.auth.util.ui.SupportVectorDrawablesButton
+        android:id="@+id/custom_email_signin_button"
+        style="@style/FirebaseUI.Button.AccountChooser.EmailButton"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/fui_sign_in_with_mail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/custom_google_signin_button" />
+
+    <FrameLayout
+        android:id="@+id/header_email_wing_left"
+        style="@style/CustomWingOuter"
+        app:layout_constraintBottom_toBottomOf="@+id/header_email"
+        app:layout_constraintEnd_toStartOf="@+id/header_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/header_email">
+
+        <View style="@style/CustomWingInner" />
+
+    </FrameLayout>
+
+    <!-- Horiz line, right of email header -->
+    <FrameLayout
+        android:id="@+id/header_email_wing_right"
+        style="@style/CustomWingOuter"
+        app:layout_constraintBottom_toBottomOf="@+id/header_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/header_email"
+        app:layout_constraintTop_toTopOf="@+id/header_email">
+
+        <View style="@style/CustomWingInner" />
+
+    </FrameLayout>
+
+
+
+    <TextView
+        android:id="@+id/custom_tos_pp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:gravity="center_horizontal"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="Terms of Service and Privacy Policy" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

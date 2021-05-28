@@ -1,9 +1,9 @@
 package com.example.appster
 
 import android.Manifest
-import android.app.Activity
 import android.content.*
 import android.content.pm.PackageManager
+import android.hardware.SensorManager
 import android.location.Location
 import android.net.Uri
 import android.os.Bundle
@@ -19,8 +19,10 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.google.android.gms.location.*
 import com.google.android.material.snackbar.Snackbar
 
+
 private const val TAG = "MainActivity"
 private const val REQUEST_FOREGROUND_ONLY_PERMISSIONS_REQUEST_CODE = 34
+private lateinit var sensorManager: SensorManager
 
 
 class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener{
@@ -39,6 +41,8 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
     private lateinit var lonTextView: TextView
     private lateinit var latTextView: TextView
 
+
+
     // Monitors connection to the while-in-use service.
     private val foregroundOnlyServiceConnection = object : ServiceConnection {
 
@@ -56,18 +60,13 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
-
         foregroundOnlyBroadcastReceiver = ForegroundOnlyBroadcastReceiver()
-
         sharedPreferences =
             getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
-
         foregroundOnlyLocationButton = findViewById(R.id.start_stop)
-        lonTextView = findViewById(R.id.lon)
-        latTextView = findViewById(R.id.lat)
-
+        lonTextView = findViewById(R.id.accel_tv)
+        latTextView = findViewById(R.id.lat_lon_tv)
         foregroundOnlyLocationButton.setOnClickListener {
             val enabled = sharedPreferences.getBoolean(
                 SharedPreferenceUtil.KEY_FOREGROUND_ENABLED, false)
@@ -84,6 +83,8 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
                 }
             }
         }
+
+
     }
 
     override fun onStart() {
