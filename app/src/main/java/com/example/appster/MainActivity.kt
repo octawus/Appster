@@ -27,23 +27,13 @@ private lateinit var sensorManager: SensorManager
 
 class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener{
     private var foregroundOnlyLocationServiceBound = false
-
-    // Provides location updates for while-in-use feature.
     private var foregroundOnlyLocationService: ForegroundOnlyLocationService? = null
-
-    // Listens for location broadcasts from ForegroundOnlyLocationService.
     private lateinit var foregroundOnlyBroadcastReceiver: ForegroundOnlyBroadcastReceiver
-
     private lateinit var sharedPreferences: SharedPreferences
-
     private lateinit var foregroundOnlyLocationButton: Button
-
-    private lateinit var lonTextView: TextView
-    private lateinit var latTextView: TextView
+    private lateinit var latLonTextView: TextView
 
 
-
-    // Monitors connection to the while-in-use service.
     private val foregroundOnlyServiceConnection = object : ServiceConnection {
 
         override fun onServiceConnected(name: ComponentName, service: IBinder) {
@@ -65,8 +55,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
         sharedPreferences =
             getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE)
         foregroundOnlyLocationButton = findViewById(R.id.start_stop)
-        lonTextView = findViewById(R.id.accel_tv)
-        latTextView = findViewById(R.id.lat_lon_tv)
+        latLonTextView = findViewById(R.id.lat_lon_tv)
         foregroundOnlyLocationButton.setOnClickListener {
             val enabled = sharedPreferences.getBoolean(
                 SharedPreferenceUtil.KEY_FOREGROUND_ENABLED, false)
@@ -227,10 +216,7 @@ class MainActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceCh
     }
 
     private fun logResultsToScreen(location: Location) {
-        val longitude = location.longitude
-        val latitude = location.latitude
-        latTextView.text = latitude.toString()
-        lonTextView.text = longitude.toString()
+        latLonTextView.text = location.toText()
     }
 
     /**
