@@ -1,6 +1,5 @@
 package com.example.appster
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -37,10 +36,8 @@ class Welcome : AppCompatActivity() {
 
     private fun init() {
         providers = arrayListOf(
-            AppleBuilder().build(),
             GoogleBuilder().build(),
-            EmailBuilder().build(),
-            PhoneBuilder().build()
+            EmailBuilder().build()
         )
 
         firebaseAuth = FirebaseAuth.getInstance()
