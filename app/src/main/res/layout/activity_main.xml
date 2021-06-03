@@ -9,13 +9,188 @@
     style="@style/LoginTheme">
 
     <TextView
-        android:id="@+id/joke_tv"
-        android:layout_width="375dp"
-        android:layout_height="696dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        android:textSize="24sp"
+        android:id="@+id/cat_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category/Categories"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="35dp">
+
+        <RadioButton
+            android:id="@+id/anyCat_rb"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Any" />
+
+        <RadioButton
+            android:id="@+id/selectCat_rb"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Custom" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/cat_sel_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select categories"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <CheckBox
+        android:id="@+id/cb_misc"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="98dp"
+        android:text="Misc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cat_sel_tv" />
+
+    <CheckBox
+        android:id="@+id/cb_dark"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Dark"
+        app:layout_constraintEnd_toStartOf="@+id/cb_christmas"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_pun" />
+
+    <CheckBox
+        android:id="@+id/cb_pun"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Pun"
+        app:layout_constraintEnd_toStartOf="@+id/cb_spooky"
+        app:layout_constraintTop_toBottomOf="@+id/cb_prog" />
+
+    <CheckBox
+        android:id="@+id/cb_prog"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="Programming"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/cb_misc"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cat_sel_tv"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <CheckBox
+        android:id="@+id/cb_spooky"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="98dp"
+        android:text="Spooky"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_misc" />
+
+    <CheckBox
+        android:id="@+id/cb_christmas"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="98dp"
+        android:text="Christmas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_spooky" />
+
+    <TextView
+        android:id="@+id/blacklist_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Blacklist"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.033"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_dark"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <CheckBox
+        android:id="@+id/nsfw_cb"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Nsfw"
+        app:layout_constraintEnd_toStartOf="@+id/religious_cb"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/blacklist_tv" />
+
+    <CheckBox
+        android:id="@+id/religious_cb"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="98dp"
+        android:text="Religious"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/blacklist_tv" />
+
+    <CheckBox
+        android:id="@+id/political_cb"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Political"
+        app:layout_constraintEnd_toStartOf="@+id/racist_cb"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nsfw_cb" />
+
+    <CheckBox
+        android:id="@+id/racist_cb"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="98dp"
+        android:text="Racist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/religious_cb" />
+
+    <CheckBox
+        android:id="@+id/sexist_cb"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Sexist"
+        app:layout_constraintEnd_toStartOf="@+id/explicit_cb"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/political_cb" />
+
+    <CheckBox
+        android:id="@+id/explicit_cb"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="98dp"
+        android:text="Explicit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/racist_cb" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
+        android:text="Once configured, shake vigorously to obtain a Joke"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/sexist_cb"
+        app:layout_constraintVertical_bias="0.923" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
