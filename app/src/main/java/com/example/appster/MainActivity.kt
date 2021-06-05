@@ -6,22 +6,20 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.android.volley.RequestQueue
 import kotlinx.android.synthetic.main.activity_main.*
-
 
 class MainActivity : AppCompatActivity(){
 
-
-    lateinit var textView: TextView
-    lateinit var queue : RequestQueue
-    lateinit var url : String
+    //private lateinit var sensorManager: SensorManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        //var accelerometer = Accelerometer(sensorManager)
+
 
         val listOfCategoriesCheckboxes : ArrayList<View>? = getAllCheckboxChildren(linearLayoutCategories)
         val listOfBlacklistCheckboxes : ArrayList<View>? = getAllCheckboxChildren(linearLayoutBlacklist)

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "323913828884",
+    "firebase_url": "https://appster-10e3c-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "appster-10e3c",
     "storage_bucket": "appster-10e3c.appspot.com"
   },
@@ -13,6 +14,22 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "323913828884-4tdq1pf0npqvuhnpviuhph981m7h5mbp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appster",
+            "certificate_hash": "e8ec5174ce7d541a9c42c7c6b1b16862782492b6"
+          }
+        },
+        {
+          "client_id": "323913828884-q5279091ddh8kj9pajas5tdmgrkmpsrc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.appster",
+            "certificate_hash": "2c813d4d55daaf6a881118ac2130d72fce91d283"
+          }
+        },
         {
           "client_id": "323913828884-rr1afc922aicr82pgh4ak5p742meje5u.apps.googleusercontent.com",
           "client_type": 3

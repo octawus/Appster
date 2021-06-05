@@ -10,10 +10,10 @@ import com.google.firebase.auth.FirebaseAuth
 
 class Welcome : AppCompatActivity() {
 
-    val AUTH_REQUEST_CODE = 123
-    lateinit var firebaseAuth: FirebaseAuth
-    lateinit var listener:FirebaseAuth.AuthStateListener
-    lateinit var providers: List<AuthUI.IdpConfig>
+    private val AUTH_REQUEST_CODE = 123
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var listener:FirebaseAuth.AuthStateListener
+    private lateinit var providers: List<AuthUI.IdpConfig>
 
     override fun onStart() {
         super.onStart()
@@ -22,8 +22,7 @@ class Welcome : AppCompatActivity() {
 
     override fun onStop() {
         FirebaseAuth.getInstance().signOut()
-        if(listener != null)
-            firebaseAuth.removeAuthStateListener(listener)
+        firebaseAuth.removeAuthStateListener(listener)
         super.onStop()
     }
 
