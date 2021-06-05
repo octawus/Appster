@@ -1,6 +1,8 @@
 package com.example.appster
 
 
+import android.content.Context
+import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,14 +13,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(){
 
-    //private lateinit var sensorManager: SensorManager
+    private lateinit var sensorManager: SensorManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        //var accelerometer = Accelerometer(sensorManager)
+        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        var accelerometer = Accelerometer(sensorManager)
 
 
         val listOfCategoriesCheckboxes : ArrayList<View>? = getAllCheckboxChildren(linearLayoutCategories)

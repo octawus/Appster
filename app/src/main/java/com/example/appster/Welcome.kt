@@ -51,6 +51,7 @@ class Welcome : AppCompatActivity() {
                     .createSignInIntentBuilder()
                     .setAvailableProviders(providers)
                     .setLogo(R.mipmap.ic_launcher)
+                    .setIsSmartLockEnabled(false)
                     .setTheme(R.style.LoginTheme)
                     .build(), AUTH_REQUEST_CODE)
             }
