@@ -19,7 +19,7 @@ class TheJoke : AppCompatActivity() {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_the_joke)
 
-            val textView = findViewById<TextView>(R.id.joke_tv)
+            //val textView = findViewById<TextView>(R.id.joke_tv)
 
             // Instantiate the RequestQueue.
             val queue = Volley.newRequestQueue(this)

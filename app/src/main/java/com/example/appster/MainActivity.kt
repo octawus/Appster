@@ -2,14 +2,15 @@ package com.example.appster
 
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.android.volley.Request
 import com.android.volley.RequestQueue
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
-import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity(){
 
@@ -22,38 +23,33 @@ class MainActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val textView = findViewById<TextView>(R.id.joke_tv)
+        val listOfCategoriesCheckboxes : ArrayList<View>? = getAllCheckboxChildren(linearLayoutCategories)
+        val listOfBlacklistCheckboxes : ArrayList<View>? = getAllCheckboxChildren(linearLayoutBlacklist)
 
-        // Instantiate the RequestQueue.
-        val queue = Volley.newRequestQueue(this)
-        val url = "https://v2.jokeapi.dev/joke/Any?type=twopart"
-
-        // Request a string response from the provided URL.
-        val stringRequest = StringRequest(
-            Request.Method.GET, url,
-            { response ->
-                val topic = Gson().fromJson(response, Joke::class.java)
-                textView.text = topic.toString()
-            },
-            { textView.text = "That didn't work!" })
-
-        // Add the request to the RequestQueue.
-        queue.add(stringRequest)
-
+        if (listOfCategoriesCheckboxes != null) {
+            for(i in listOfCategoriesCheckboxes){
+                Log.v("Aiuditah", (i as CheckBox).text.toString())
+            }
+        }
     }
 
-    fun get_da_joke(view : View){
-        val stringRequest = StringRequest(
-        Request.Method.GET, url,
-        { response ->
-            // Display the first 500 characters of the response string.
-            val topic = Gson().fromJson(response, Joke::class.java)
-            textView.text = topic.toString()
-            // textView.text = "Response is: ${response.substring(0, 500)}"
-        },
-        { textView.text = "That didn't work!" })
-
-        // Add the request to the RequestQueue.
-        queue.add(stringRequest)}
-
+    private fun getAllCheckboxChildren(v: View): ArrayList<View>? {
+        if (v !is ViewGroup) {
+            val viewArrayList = ArrayList<View>()
+            viewArrayList.add(v)
+            return viewArrayList
+        }
+        val result = ArrayList<View>()
+        val vg = v
+        for (i in 0 until vg.childCount) {
+            val child = vg.getChildAt(i)
+            val viewArrayList = ArrayList<View>()
+            if(v is CheckBox) {
+                viewArrayList.add(v)
+            }
+            viewArrayList.addAll(getAllCheckboxChildren(child)!!)
+            result.addAll(viewArrayList)
+        }
+        return result
+    }
 }
