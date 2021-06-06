@@ -2,6 +2,7 @@ package com.example.appster
 
 
 import android.content.Context
+import android.content.Intent
 import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.Log
@@ -20,11 +21,12 @@ class MainActivity : AppCompatActivity(){
         setContentView(R.layout.activity_main)
 
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        var accelerometer = Accelerometer(sensorManager)
-
+        var intent = Intent(this, TheJoke::class.java)
 
         val listOfCategoriesCheckboxes : ArrayList<View>? = getAllCheckboxChildren(linearLayoutCategories)
         val listOfBlacklistCheckboxes : ArrayList<View>? = getAllCheckboxChildren(linearLayoutBlacklist)
+
+
 
         if (listOfCategoriesCheckboxes != null) {
             for(i in listOfCategoriesCheckboxes){
