@@ -2,6 +2,7 @@ package com.example.appster
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.android.volley.Request
@@ -9,9 +10,10 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_the_joke.*
 
 class TheJoke : AppCompatActivity() {
-        lateinit var textView: TextView
+
         lateinit var queue : RequestQueue
         lateinit var url : String
 
@@ -19,37 +21,23 @@ class TheJoke : AppCompatActivity() {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_the_joke)
 
-            //val textView = findViewById<TextView>(R.id.joke_tv)
 
             // Instantiate the RequestQueue.
             val queue = Volley.newRequestQueue(this)
-            val url = "https://v2.jokeapi.dev/joke/Any?type=twopart"
+            val url = intent.getStringExtra("querry")
 
+            Log.d("Aiudenmen", url.toString())
             // Request a string response from the provided URL.
             val stringRequest = StringRequest(
                 Request.Method.GET, url,
                 { response ->
                     val topic = Gson().fromJson(response, Joke::class.java)
-                    textView.text = topic.toString()
+                    joke_tv.text = topic.toString()
                 },
-                { textView.text = "That didn't work!" })
+                { joke_tv.text = "That didn't work!" })
 
             // Add the request to the RequestQueue.
             queue.add(stringRequest)
 
         }
-
-        fun get_da_joke(view : View){
-            val stringRequest = StringRequest(
-                Request.Method.GET, url,
-                { response ->
-                    // Display the first 500 characters of the response string.
-                    val topic = Gson().fromJson(response, Joke::class.java)
-                    textView.text = topic.toString()
-                    // textView.text = "Response is: ${response.substring(0, 500)}"
-                },
-                { textView.text = "That didn't work!" })
-
-            // Add the request to the RequestQueue.
-            queue.add(stringRequest)}
     }

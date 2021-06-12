@@ -17,6 +17,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <activity
+            android:name=".TheJoke"
+            android:launchMode="singleInstance" />
     </application>
 
 </manifest>

@@ -38,13 +38,15 @@
             android:id="@+id/anyCat_rb"
             android:layout_width="195dp"
             android:layout_height="wrap_content"
-            android:text="Any" />
+            android:text="Any"
+            android:onClick="greyOutCategoryCheckboxes"/>
 
         <RadioButton
             android:id="@+id/selectCat_rb"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Custom" />
+            android:text="Custom"
+            android:onClick="unGreyCategoryCheckboxes"/>
 
     </RadioGroup>
 
