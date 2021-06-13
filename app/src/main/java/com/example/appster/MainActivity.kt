@@ -13,6 +13,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.lang.StringBuilder
@@ -63,6 +64,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
         listOfCategoriesCheckboxes = getCheckboxChildren(linearLayoutCategories)
         listOfBlacklistCheckboxes  = getCheckboxChildren(linearLayoutBlacklist)
 
+        anyCat_rb.isChecked = true
+        greyOutCategoryCheckboxes(activity_main)
+
     }
 
 
@@ -101,18 +105,27 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
             val intent = Intent(this, TheJoke::class.java)
             val sb = StringBuilder()
             var anyFlag = false
+            var anyCat = false
             queryString = "https://v2.jokeapi.dev/joke/"
 
-            if (anyCat_rb.isActivated){
+            for(i in listOfCategoriesCheckboxes){
+                if ((i as CheckBox).isChecked) {
+                    anyCat = true
+                    break
+                }
+            }
+
+            if (anyCat_rb.isChecked){
                 queryString += "Any"
             }
-            else if (selectCat_rb.isActivated)
+            else if (selectCat_rb.isChecked)
             {
                 for(i in listOfCategoriesCheckboxes){
                     if ((i as CheckBox).isChecked) {
-                        queryString = "$queryString$i,"
+                        queryString = "$queryString${i.text},"
                     }
                 }
+                queryString = queryString.dropLast(1)
             }
 
             for(i in listOfBlacklistCheckboxes){
@@ -123,16 +136,25 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
             }
 
             if (anyFlag) {
-                sb.append(queryString).append("?blacklistFlags=")
+                queryString += "?blacklistFlags="
                 for (i in listOfBlacklistCheckboxes) {
                     if ((i as CheckBox).isChecked) {
-                        queryString = queryString + i.toString().lowercase(Locale.getDefault()) + ","
+                        queryString = queryString + i.text.toString().lowercase(Locale.getDefault()) + ","
                     }
                 }
+                queryString = queryString.dropLast(1)
             }
 
-            intent.putExtra("querry", queryString)
-            startActivity(intent)
+            if(selectCat_rb.isChecked && !anyCat){
+                Toast.makeText(this, "No category selected", Toast.LENGTH_SHORT).show()
+            } else {
+                Log.d("x antes del intent", x.toString())
+                intent.putExtra("x", x)
+                intent.putExtra("y", y)
+                intent.putExtra("z", z)
+                intent.putExtra("querry", queryString)
+                startActivity(intent)
+            }
         }
     }
 
@@ -140,13 +162,13 @@ class MainActivity : AppCompatActivity(), SensorEventListener{
         TODO("Not yet implemented")
     }
 
-    fun greyOutCategoryCheckboxes() {
+    fun greyOutCategoryCheckboxes(view : View) {
         for(i in listOfCategoriesCheckboxes){
             (i as CheckBox).isEnabled = false
         }
     }
 
-    fun unGreyCategoryCheckboxes() {
+    fun unGreyCategoryCheckboxes(view : View) {
         for(i in listOfCategoriesCheckboxes){
             (i as CheckBox).isEnabled = true
         }
