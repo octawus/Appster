@@ -27,13 +27,11 @@ class TheJoke : AppCompatActivity() {
 
             val ref = FirebaseDatabase.getInstance().getReference("values")
 
-            Log.d("Aiudenmen", url.toString())
             // Request a string response from the provided URL.
             val stringRequest = StringRequest(
                 Request.Method.GET, url,
                 { response ->
                     val topic = Gson().fromJson(response, Joke::class.java)
-                    Log.d("topic", topic.toString())
                     if (topic.joke == null) {
                         var text = "Setup: \n" + topic.setup + "\n"
                         text = text + "Delivery: \n" + topic.delivery

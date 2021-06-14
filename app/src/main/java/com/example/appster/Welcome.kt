@@ -43,7 +43,7 @@ class Welcome : AppCompatActivity() {
         listener = FirebaseAuth.AuthStateListener { p0 ->
             val user = p0.currentUser
             if(user != null) {
-                Toast.makeText(this@Welcome, ""+user.uid, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@Welcome, "Welcome!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
             } else {
